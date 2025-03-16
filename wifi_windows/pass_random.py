@@ -1,5 +1,6 @@
 import random
 import string
+from config.config import *  # 导入所有配置
 
 class PassRandom:
     def __init__(self, length_range, number):
@@ -19,17 +20,15 @@ class PassRandom:
     def write_pass(self):
         """生成多个随机密码并写入文件"""
         try:
-            with open("passwd_WiFi", "a+") as f:
+            with open(PASS_DICT_FILE, "a+") as f:
                 for _ in range(self.number):
                     length = self.generate_random_length()
                     password = self.generate_random_string(length)
                     f.write(password + '\n')  # 每个密码占一行
-            print(f"Successfully wrote {self.number} passwords to 'passwd_WiFi'.")
+            print(f"Successfully wrote {self.number} passwords to {PASS_DICT_FILE}.")
         except Exception as e:
             print(f"An error occurred: {e}")
 
 if __name__ == '__main__':
-    length_range = (8, 12)  # 设置密码长度区间
-    number = 10  # 设置生成密码的数量
     wifi_pass = PassRandom(length_range, number)
     wifi_pass.write_pass()
