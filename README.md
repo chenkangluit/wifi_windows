@@ -31,10 +31,10 @@ cd wifi-windows
 
 在 `config` 目录下创建以下文件：
 - `wifi_template.xml`：WiFi 配置模板
-- `pass.txt`：密码字典文件
+- `password_dict.txt`：密码字典文件
 
 3. 配置密码字典：
-在 `config/pass.txt` 中添加要尝试的密码，每行一个密码。
+在 `config/password_dict.txt` 中添加要尝试的密码，每行一个密码。
 
 ## 使用方法
 
