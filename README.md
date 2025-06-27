@@ -60,24 +60,25 @@ python wifi-scaner.py -m conn -s "WIFI名称"
 
 ### 连接配置
 ```python
-MAX_RETRIES = 3      # 最大重试次数
-WAIT_TIME = 5        # 连接等待时间（秒）
-CHECK_INTERVAL = 2   # 状态检查间隔（秒）
-DISCONNECT_WAIT = 2  # 断开连接后的等待时间（秒）
+FAST_WAIT_TIME = 5            # 快速检测窗口(秒)
+MAX_RETRIES = 2               # 最大重试次数
+FAST_CHECK_INTERVAL = 0.3     # 快速检测间隔(秒)
+DISCONNECT_WAIT = 0.5         # 断开等待时间(秒)
+CONNECT_TIMEOUT = 5           # 连接超时(秒)
 ```
 
 ### 网络测试配置
 ```python
-PING_TARGET = "8.8.8.8"  # 用于测试网络连通性的目标
-PING_COUNT = 3           # ping测试次数
+PING_TARGET = "8.8.8.8"       # Google DNS(响应最快)
+PING_COUNT = 2                # Ping次数
 ```
 
 ### 文件路径配置
 ```python
 CONFIG_DIR = "config"
 TEMPLATE_PATH = "config/wifi_template.xml"
-PASSWD_FILE = "config/passwd.json"
-PASS_DICT_FILE = "config/pass.txt"
+PASSWD_FILE = "config/saved_passwords.json"
+PASS_DICT_FILE = "config/password_dict.txt"
 ```
 
 ## 注意事项
@@ -92,8 +93,8 @@ PASS_DICT_FILE = "config/pass.txt"
 - `wifi-scaner.py`：主程序文件
 - `config/config.py`：配置文件
 - `config/wifi_template.xml`：WiFi配置模板
-- `config/pass.txt`：密码字典
-- `config/passwd.json`：已保存的密码文件
+- `config/password_dict.txt`：密码字典
+- `config/saved_passwords.json`：已保存的密码文件
 
 ## 常见问题
 
@@ -117,6 +118,8 @@ PASS_DICT_FILE = "config/pass.txt"
 - 支持基本的 WiFi 扫描和连接功能
 - 添加配置文件支持
 - 实现密码保存功能
+### v1.0.1
+- 优化连接效率(默认配置，一次大约6秒)
 
 ## 许可证
 
